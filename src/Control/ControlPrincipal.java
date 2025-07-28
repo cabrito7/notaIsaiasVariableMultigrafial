@@ -49,7 +49,6 @@ public class ControlPrincipal {
         return false;
     }
 
-    // Modified to allow multiple edges between same vertices
     public void agregarArista(String texto, String pesoDeLaArista, boolean dirigido) {
         try {
             if (texto.length() == 3 && texto.charAt(1) == ',' && 
@@ -60,9 +59,7 @@ public class ControlPrincipal {
                     char origen = texto.charAt(0);
                     char destino = texto.charAt(2);
                     
-                    // Always allow adding edges (this enables multigraph functionality)
                     if (!dirigido) {
-                        // Add edge in both directions for undirected multigraph
                         Multigrafo.Arista arista1 = new Multigrafo.Arista(origen, destino, peso, ++contadorDeAristas);
                         Multigrafo.Arista arista2 = new Multigrafo.Arista(destino, origen, peso, ++contadorDeAristas);
                         aristasDelMultigrafo.add(arista1);
@@ -94,7 +91,6 @@ public class ControlPrincipal {
         return -1;
     }
 
-    // Modified adjacency matrix creation for multigraph (keeps minimum weight between vertices)
     public int[][] crearMatrizDeAdyacencia() {
         int numVertices = this.cMultigrafo.getMultigrafo().getVertices().length;
         int[][] matrizDeAdyacencia = new int[numVertices][numVertices];
@@ -105,8 +101,6 @@ public class ControlPrincipal {
                 matrizDeAdyacencia[i][j] = 0;
             }
         }
-        
-        // For multigraphs, we keep the minimum weight between any two vertices
         for (Multigrafo.Arista arista : this.cMultigrafo.getMultigrafo().getAristas()) {
             int origenIdx = buscarEnElAbecedario(arista.getOrigen());
             int destinoIdx = buscarEnElAbecedario(arista.getDestino());
@@ -173,7 +167,6 @@ public class ControlPrincipal {
         return minDistanceNode;
     }
 
-    // Method to get information about multiple edges
     public String obtenerInfoMultigrafo() {
         if (cMultigrafo.getMultigrafo() == null) {
             return "<html>No hay multigrafo creado</html>";
