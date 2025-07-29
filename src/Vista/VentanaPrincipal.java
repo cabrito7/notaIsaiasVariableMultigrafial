@@ -77,7 +77,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 0));
         jLabel1.setText("CALCULADORA DEL CAMINO QUE MENOS PESA");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/resized_image_100_height.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mate-125.png"))); // NOI18N
 
         jLabel5.setText("Cuantos vertices va a tener el multigrafo:");
 
